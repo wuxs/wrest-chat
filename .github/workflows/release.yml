@@ -65,4 +65,4 @@ jobs:
           context: ./docker
           push: true
           platforms: linux/amd64
-          tags: rehiy/wrest-chat:latest
+          tags: wuxs/wrest-chat:latest
