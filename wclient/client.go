@@ -39,7 +39,7 @@ func Register() *wcferry.Client {
 	}
 
 	// 初始化连接
-	logman.Warn("wcf starting ...")
+	logman.Warn("wcf starting ...", "address", host, "port", port)
 	if err := wc.Connect(); err != nil {
 		logman.Fatal("wcf start failed", "error", err)
 	}

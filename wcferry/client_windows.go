@@ -41,7 +41,7 @@ func (c *Client) sdkCall(fn string, a ...uintptr) error {
 	// 执行 fn(a...)
 	r1, r2, err := proc.Call(a...)
 	logman.Warn("call dll:"+fn, "r1", r1, "r2", r2, "error", err)
-	if err.Error() == "Attempt to access invalid address." {
+	if err.Error() == "Attempt to access invalid address." || err.Error() == "Invalid address." {
 		err = nil // 忽略已知问题
 	}
 	return err

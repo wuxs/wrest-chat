@@ -4,11 +4,12 @@ import (
 	"errors"
 	"time"
 
+	"github.com/opentdp/go-helper/logman"
 	"github.com/opentdp/go-helper/onquit"
 )
 
-const Wcf_Version = "39.2.4.0"
-const Wechat_Version = "3.9.10.27"
+const Wcf_Version = "39.3.5.0"
+const Wechat_Version = "3.9.11.25"
 
 type Client struct {
 	SdkLibrary string     // sdk.dll 路径
@@ -78,8 +79,9 @@ func (c *Client) DisableReceiver(ks ...string) error {
 // 启动 wcf 服务
 // return error 错误信息
 func (c *Client) wxInitSDK() error {
-	err := c.sdkCall("WxInitSDK", uintptr(0), uintptr(c.ListenPort))
+	err := c.sdkCall("WxInitSDK", uintptr(1), uintptr(10086))
 	time.Sleep(5 * time.Second)
+	logman.Info("WxInitSDK", "error", err)
 	return err
 }
 
